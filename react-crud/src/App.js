@@ -35,6 +35,7 @@ function App() {
     if (title === '' || author === '') {
       alert("an empty book!!!")
     }
+
     let book = { title: title, author: author }
     const response = await fetch('http://localhost:5000',
       {
@@ -96,9 +97,8 @@ function App() {
 
   }
 
-
   return (
-    <div className="App">
+    <div class="container">
       <form >
         <label>title</label>
         <input type="input" value={title} onChange={changeTitle}></input>
@@ -111,17 +111,20 @@ function App() {
 
       </form>
 
-      <h1>Book List</h1>
-      <ul>
-        {books.map(book => (
-          <li key={book.id}>
+        <h1>Book List</h1>
+        <ul>
+          {books.map(book => (
+            <li key={book.id}>
 
-            <strong>{book.title}</strong> by {book.author}
-            <button onClick={() => handleEditClick(book)}>edit</button>
-            <button onClick={() => { deleteBook(book.id) }}>delete</button>
-          </li>
-        ))}
-      </ul>
+              <strong>{book.title}</strong> by {book.author}
+              <div class="edit-delete-buttons">
+                <button onClick={() => handleEditClick(book)} >edit</button>
+                <button onClick={() => { deleteBook(book.id) }} >delete</button>
+              </div>
+            </li>
+          ))}
+        </ul>
+
 
     </div>
   );

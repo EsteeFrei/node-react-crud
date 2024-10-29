@@ -8,6 +8,9 @@ app.use(cors())
 
 app.use(express.json())
 
+app.use(express.static('public'));
+
+
 let books = [
     { id: 1, title: "book1", author: "1111" },
     { id: 2, title: "book2", author: "2222" }
